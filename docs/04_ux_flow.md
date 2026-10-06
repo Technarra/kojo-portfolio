@@ -62,16 +62,19 @@ AIの提供元・モデル名や、内部の理由のコードは表示しませ
 ## 主な利用の流れ
 
 ```mermaid
-flowchart LR
-    subgraph Ask["その場で聞く"]
-        A1["AIタブ"] --> A2["映して質問"] --> A3{"根拠"}
+flowchart TD
+    subgraph Ask["1. その場で聞く"]
+        direction LR
+        A1["AIタブで<br/>映して質問"] --> A3{"根拠がある？"}
         A3 -->|ある| A4["該当区間を見る"]
         A3 -->|ない| A5["Q&Aに登録"]
     end
-    subgraph Answer["ベテランが答える"]
+    subgraph Answer["2. ベテランが答える"]
+        direction LR
         B1["受信箱に依頼"] --> B2["動画で回答<br/>AIが下書き"] --> B3["質問者に届く"]
     end
-    subgraph Reuse["次に生かす"]
+    subgraph Reuse["3. 次に生かす"]
+        direction LR
         C1["技術承認<br/>（PIN）"] --> C2["次の質問の根拠"]
     end
     A5 --> B1
